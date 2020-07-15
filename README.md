@@ -1,1 +1,1 @@
-# JSS Quiz Admin
+# Razzle MVC with material-ui
