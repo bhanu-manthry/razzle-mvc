@@ -1,5 +1,5 @@
 function login(req, res, next) {
-  if (req.body.email == 'admin@jss.com' && req.body.password == 'password@1') {
+  if (req.body.email == 'admin@email.com' && req.body.password == 'password') {
     req.session.user = 'bhanu';
     res.json({
       success: 'true'

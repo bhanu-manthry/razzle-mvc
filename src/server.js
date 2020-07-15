@@ -9,25 +9,14 @@ import apiRoutes from './apiRoutes';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import routes from './routes';
-import expressMysqlSession from 'express-mysql-session'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const server = express();
 
-const MySqlStore = expressMysqlSession(session);
-
-const sessionStore = new MySqlStore({
-  host: process.env.RAZZLE_DB_HOST,
-  port: process.env.RAZZLE_DB_PORT,
-  user: process.env.RAZZLE_DB_USER,
-  password: process.env.RAZZLE_DB_PASSWORD,
-  database: process.env.RAZZLE_DB_NAME
-})
-
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(session({ secret: 'keyboard cat', store: sessionStore }));
+server.use(session({ secret: 'keyboard cat' }));
 
 server.use('/api', apiRoutes)
 
